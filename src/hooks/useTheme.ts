@@ -14,6 +14,7 @@ export const useTheme = () => {
 
   useEffect(() => {
     const localThemeName = getFromLS("tsn-theme");
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     localThemeName ? setTheme(themes[localThemeName]) : setTheme(themes.dark);
     setThemeLoaded(true);
   }, []);

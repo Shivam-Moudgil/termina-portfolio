@@ -1,12 +1,11 @@
 import {
   Cmd,
   HeroContainer,
-  Link,
   PreImg,
   PreName,
   PreNameMobile,
   PreWrapper,
-  Seperator,
+  Seperator
 } from "../styles/Welcome.styled";
 
 const Welcome: React.FC = () => {

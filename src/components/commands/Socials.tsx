@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
-import { ProjectsIntro } from "../styles/Projects.styled";
-import { Cmd, CmdDesc, CmdList, HelpWrapper } from "../styles/Help.styled";
 import {
   checkRedirect,
   generateTabs,
   getCurrentCmdArry,
   isArgInvalid,
 } from "../../utils/funcs";
+import { Cmd, CmdDesc, CmdList, HelpWrapper } from "../styles/Help.styled";
+import { ProjectsIntro } from "../styles/Projects.styled";
 import { termContext } from "../Terminal";
 import Usage from "../Usage";
 
@@ -20,6 +20,7 @@ const Socials: React.FC = () => {
   useEffect(() => {
     if (checkRedirect(rerender, currentCommand, "socials")) {
       socials.forEach(({ id, url }) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         id === parseInt(arg[1]) && window.open(url, "_blank");
       });
     }
