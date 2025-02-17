@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
-import { useTheme } from "./hooks/useTheme";
 import GlobalStyle from "./components/styles/GlobalStyle";
 import Terminal from "./components/Terminal";
+import { useTheme } from "./hooks/useTheme";
 
 export const themeContext = createContext<
   ((switchTheme: DefaultTheme) => void) | null
@@ -19,6 +19,7 @@ function App() {
     window.addEventListener(
       "keydown",
       e => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         ["ArrowUp", "ArrowDown"].indexOf(e.code) > -1 && e.preventDefault();
       },
       false
@@ -27,7 +28,7 @@ function App() {
 
   useEffect(() => {
     setSelectedTheme(theme);
-  }, [themeLoaded]);
+  }, [theme, themeLoaded]);
 
   // Update meta tag colors when switching themes
   useEffect(() => {
@@ -39,10 +40,13 @@ function App() {
       "meta[name='msapplication-TileColor']"
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     metaThemeColor && metaThemeColor.setAttribute("content", themeColor);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     metaMsTileColor && metaMsTileColor.setAttribute("content", themeColor);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     maskIcon && maskIcon.setAttribute("color", themeColor);
-  }, [selectedTheme]);
+  }, [selectedTheme, theme.colors?.body]);
 
   const themeSwitcher = (switchTheme: DefaultTheme) => {
     setSelectedTheme(switchTheme);
